@@ -1,0 +1,93 @@
+/* Jev portfolio shared styles. Direction: DESIGN.md at repo root.
+   App 04 accent: coral, the color of the stop moment. */
+
+:root {
+  --bg: #0C0F0D;
+  --surface: #141A16;
+  --surface2: #1A211C;
+  --line: #232B26;
+  --ink: #E8EDE6;
+  --muted: #9AA69B;
+  --accent: #FB7185;
+  --danger: #F87171;
+  --mono: ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  --sans: 'Segoe UI', system-ui, sans-serif;
+  --radius-s: 6px;
+  --radius-m: 10px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 16px/1.55 var(--sans); }
+.wrap { max-width: 1000px; margin: 0 auto; padding: 32px 20px 64px; }
+
+.top { margin-bottom: 24px; }
+.num { font: 600 13px var(--mono); color: var(--muted); }
+.top h1 { margin: 2px 0 0; font-size: 24px; font-weight: 650; }
+.job { margin: 2px 0 0; color: var(--muted); }
+
+.panels { display: grid; grid-template-columns: 1fr 1.2fr; gap: 16px; align-items: start; }
+@media (max-width: 760px) { .panels { grid-template-columns: 1fr; } }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-m); padding: 18px; }
+label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+input[type=number] {
+  width: 100%; background: var(--surface2); border: 1px solid var(--line);
+  border-radius: var(--radius-s); color: var(--ink); font: 15px/1.5 var(--mono);
+  padding: 10px 12px;
+}
+input:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+button {
+  min-height: 40px; margin-top: 12px; padding: 0 16px; background: var(--surface2);
+  color: var(--ink); border: 1px solid var(--line); border-radius: var(--radius-s);
+  font: 600 14px var(--sans); cursor: pointer;
+}
+button.secondary { color: var(--muted); }
+button:hover:not(:disabled) { border-color: var(--accent); }
+button:disabled { opacity: 0.55; cursor: default; }
+
+.hint { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; }
+.error { color: var(--danger); font-size: 14px; margin: 10px 0 0; }
+
+.summary { border: 1px solid var(--accent); border-radius: var(--radius-m); padding: 14px 16px; background: var(--surface); font: 500 15px var(--mono); }
+.summary.empty { border-color: var(--line); }
+.summary.empty .word { font: 500 15px var(--sans); color: var(--muted); }
+.summary strong { color: var(--accent); }
+.summary .save { color: var(--muted); display: block; margin-top: 4px; font-size: 13px; }
+
+h2 { font-size: 13px; font-weight: 600; color: var(--muted); margin: 18px 0 8px; }
+h2.tight { margin-top: 0; }
+
+.steps { list-style: none; margin: 0; padding: 0; }
+.steps li {
+  display: grid; grid-template-columns: 28px 1fr auto; gap: 10px;
+  padding: 10px 0 10px 10px; border-top: 1px solid var(--line);
+  opacity: 1; transform: none;
+}
+.steps li:first-child { border-top: 0; }
+.steps li .n { font: 600 13px var(--mono); color: var(--muted); padding-top: 2px; }
+.steps li .action { display: block; font-weight: 600; font-size: 14px; }
+.steps li .out { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+.steps li .why { display: block; font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+.steps li .verdict { font: 700 12px var(--mono); color: var(--muted); align-self: start; padding-top: 3px; letter-spacing: 0.02em; }
+.steps li.stop { border-left: 2px solid var(--accent); }
+.steps li.stop .verdict { color: var(--accent); }
+
+/* The one declared motion exception: rows arrive in order, once. */
+@media (prefers-reduced-motion: no-preference) {
+  .steps li.pending { opacity: 0; transform: translateY(4px); }
+  .steps li { transition: opacity 160ms ease, transform 160ms ease; }
+}
+
+.ledger { list-style: none; margin: 0; padding: 0; }
+.ledger li { display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-top: 1px solid var(--line); font-size: 13.5px; }
+.ledger li:first-child { border-top: 0; }
+.ledger .at { font: 500 12.5px var(--mono); color: var(--muted); min-width: 60px; }
+.ledger .ex { flex: 1; }
+.ledger .sc { font: 500 12.5px var(--mono); color: var(--muted); text-align: right; }
+.ledger strong { color: var(--ink); font-family: var(--mono); }
+.muted { color: var(--muted); }
+
+.batch { margin-top: 16px; }

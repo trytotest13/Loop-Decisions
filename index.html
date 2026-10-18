@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jev Loop Decisions</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <span class="num">04 / LOOP DECISIONS</span>
+    <h1>Jev Loop Decisions</h1>
+    <p class="job">After every agent step, decides whether another step is likely to help.</p>
+  </header>
+
+  <div class="panels">
+    <section class="panel" aria-label="Controls">
+      <label for="budget">Token budget</label>
+      <input type="number" id="budget" min="200" max="100000" step="100" value="5000">
+
+      <button id="runBtn">Run the bug-hunt simulation</button>
+      <button id="resetBtn" class="secondary">Reset</button>
+      <p class="hint">The script has 8 steps available. Try budget 800 to watch the
+        controller stop earlier on the budget rule.</p>
+      <p class="error" id="error" role="alert" hidden></p>
+    </section>
+
+    <section class="panel" aria-label="Trajectory">
+      <div class="summary empty" id="summary">
+        <span class="word">No trajectory yet. Run the simulation.</span>
+      </div>
+
+      <h2>Step log</h2>
+      <ol class="steps" id="steps">
+        <li class="muted">Each step appears here with the controller verdict.</li>
+      </ol>
+    </section>
+  </div>
+
+  <section class="panel batch" aria-label="Run ledger">
+    <h2 class="tight">Run ledger</h2>
+    <ul class="ledger" id="ledger">
+      <li class="muted">No simulations run yet this session.</li>
+    </ul>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

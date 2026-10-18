@@ -1,0 +1,14 @@
+{
+  "name": "jev-loop-decisions",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Jev judges the agent trajectory after every step: continue or stop, with reasons",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
