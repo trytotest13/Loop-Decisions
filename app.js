@@ -1,6 +1,11 @@
 'use strict';
 
 const $ = (id) => document.getElementById(id);
+
+// Trajectory text reaches the DOM through innerHTML templates; escape it there.
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => (
+  { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+));
 const budgetEl = $('budget');
 const runBtn = $('runBtn');
 const resetBtn = $('resetBtn');
@@ -42,9 +47,9 @@ function stepRow(s, i, pending) {
   return (
     `<li class="${cls}" data-i="${i}">` +
     `<span class="n">${i + 1}</span>` +
-    `<span class="body"><span class="action">${s.action}</span>` +
-    `<span class="out">${s.output}</span>` +
-    `<span class="why">${s.reasons.join(' ')}</span></span>` +
+    `<span class="body"><span class="action">${esc(s.action)}</span>` +
+    `<span class="out">${esc(s.output)}</span>` +
+    `<span class="why">${esc(s.reasons.join(" "))}</span></span>` +
     `<span class="verdict">${s.decision}</span></li>`
   );
 }
